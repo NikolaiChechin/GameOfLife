@@ -11,6 +11,12 @@ public class GameTest {
         assertArrayEquals(nextGeneration.getBoard(), expectedBoard);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void checkEmptyBoard() {
+        boolean initialBoard[][] = {};
+        Game game = new Game(initialBoard);
+    }
+
     @Test
     public void twoNeighborsDie() {
         boolean initialBoard[][] =

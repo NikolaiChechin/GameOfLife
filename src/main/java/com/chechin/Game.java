@@ -2,13 +2,19 @@ package com.chechin;
 
 public class Game {
 
-    private boolean [][] board;
+    private boolean[][] board;
     private final int rowSize;
     private final int columnSize;
 
-    public Game(boolean [][] board){
-        this.rowSize = board.length;
-        this.columnSize = board[0].length;
+    public Game(boolean[][] board) {
+        rowSize = board.length;
+        if (rowSize == 0) {
+            throw new IllegalArgumentException("Board should have at least one row");
+        }
+        columnSize = board[0].length;
+        if (columnSize == 0) {
+            throw new IllegalArgumentException("Board should have at least one column");
+        }
         this.board = board;
     }
 
@@ -34,7 +40,7 @@ public class Game {
         return count;
     }
 
-    public Game getNextGeneration(){
+    public Game getNextGeneration() {
         boolean nextGeneration[][] = new boolean[rowSize][columnSize];
         for (int i = 0; i < rowSize; i++) {
             for (int j = 0; j < columnSize; j++) {
@@ -48,9 +54,9 @@ public class Game {
     private boolean nextCellState(int i, int j) {
         int neighborsCount = countNeighbors(i, j);
         boolean currentState = board[i][j];
-        if(currentState && (neighborsCount == 2 || neighborsCount == 3)){
+        if (currentState && (neighborsCount == 2 || neighborsCount == 3)) {
             return true;
-        } else if (!currentState && neighborsCount == 3){
+        } else if (!currentState && neighborsCount == 3) {
             return true;
         }
         return false;
