@@ -20,11 +20,7 @@ public class GameService {
     }
 
     public Game getGame(Long id) {
-        if (gamesById.containsKey(id)) {
-            return gamesById.get(id);
-        } else {
-            throw new IllegalArgumentException("No game found for id: " + id);
-        }
+        return gamesById.get(id);
     }
 
     public void deleteGame(Long id) {

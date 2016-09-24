@@ -1,3 +1,5 @@
+package com.chechin;
+
 import com.chechin.Game;
 import org.junit.Test;
 
